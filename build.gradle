@@ -1,0 +1,14 @@
+plugins {
+    id 'java'
+}
+
+group 'com.happy'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    implementation 'org.apache.tika:tika-core:1.24.1'
+}
