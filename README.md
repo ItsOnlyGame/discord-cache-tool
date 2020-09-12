@@ -7,4 +7,4 @@ Just open up a terminal and open the jar with java
 ```
 java -jar Discord-Cache-Tool-1.0.0.jar
 ```
-Remember to use Java 8
+Remember to use Java 8+
