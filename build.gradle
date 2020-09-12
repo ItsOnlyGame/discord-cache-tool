@@ -1,9 +1,17 @@
 plugins {
     id 'java'
+    id 'application'
+    id 'com.github.johnrengelman.shadow' version '5.2.0'
 }
 
+mainClassName = "com.happy.Main"
 group 'com.happy'
-version '1.0'
+
+shadowJar {
+    archiveBaseName = 'Discord-Cache-Tool'
+    archiveClassifier = ''
+    archiveVersion = '1.0.0'
+}
 
 repositories {
     mavenCentral()
