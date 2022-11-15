@@ -10,7 +10,7 @@ group 'com.happy'
 shadowJar {
     archiveBaseName = 'Discord-Cache-Tool'
     archiveClassifier = ''
-    archiveVersion = '1.0.0'
+    archiveVersion = '2.0.0'
 }
 
 repositories {
@@ -18,5 +18,5 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.apache.tika:tika-core:1.24.1'
+    implementation 'org.apache.tika:tika-core:2.6.0'
 }

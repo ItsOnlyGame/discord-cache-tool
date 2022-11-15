@@ -1,4 +1,4 @@
-package com.happy;
+package com.iog;
 
 import org.apache.tika.Tika;
 
@@ -6,32 +6,31 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.StandardCopyOption;
-import java.util.Scanner;
 
-public class Main {
+public class Main implements Runnable {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args)  {
+		Thread thread = new Thread(new Main());
+		thread.start();
+	}
+
+	@Override
+	public void run() {
 		Tika tika = new Tika();
-		Scanner scanner = new Scanner(System.in);
-
-        System.out.println("Give file destination folder: (default: \"./discord_cache\")");
-        String destination = scanner.nextLine();
-		if (destination.equals("")) {
-            destination = "./discord_cache";
-        }
+		String destination = "./discord_cache";
 
 		File directory = new File(destination);
-	    if (!directory.exists()){
-	    	if (!directory.mkdir()) {
+		if (!directory.exists()){
+			if (!directory.mkdir()) {
 				System.err.println("ERROR: Couldn't create the destination folder in this directory");
 				System.exit(-1);
 			}
-	    }
-		
+		}
+
 		String user = System.getProperty("user.home");
 		File folder = new File(user + "\\AppData\\Roaming\\discord\\Cache");
 		File[] listOfFiles = folder.listFiles();
-		
+
 		float done = 0.0f;
 		float p = 0;
 
@@ -66,7 +65,12 @@ public class Main {
 			System.out.println((int)done + "% - " + file.getName());
 
 			if (file.isFile()) {
-				String format = tika.detect(file);
+				String format;
+				try {
+					format = tika.detect(file);
+				} catch (IOException e) {
+					throw new RuntimeException(e);
+				}
 				format = format.substring(format.lastIndexOf("/") + 1);
 
 				File new_file = new File(destination + "\\" + file.getName() +"."+ format);
@@ -77,5 +81,4 @@ public class Main {
 		}
 		System.out.println("DONE - 100%");
 	}
-
 }
