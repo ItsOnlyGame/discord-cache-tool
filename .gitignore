@@ -1,4 +1,2 @@
-/discord_cache/
-/build/
-/.idea/
-/.gradle/
+/target
+/discord_cache

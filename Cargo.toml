@@ -1,0 +1,11 @@
+[package]
+name = "discord-cache-tool"
+version = "3.0.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+infer = "0.12.0"
+fs_extra = "1.2.0"
+dirs = "4.0.0"
