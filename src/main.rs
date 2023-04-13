@@ -20,7 +20,7 @@ fn main() {
     };
 
 
-    let path_to_discord_cache = String::from(dirs::home_dir().unwrap().to_str().unwrap().to_owned() + "\\AppData\\Roaming\\discord\\Cache");
+    let path_to_discord_cache = String::from(dirs::home_dir().unwrap().to_str().unwrap().to_owned() + "\\AppData\\Roaming\\discord\\Cache\\Cache_Data");
 
     let mut from_paths = Vec::new();
     for file in fs::read_dir(path_to_discord_cache).unwrap() {
